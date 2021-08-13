@@ -1,7 +1,6 @@
 "use strict";
-//wroted by jchanthy from ebook essential typescript
+// wroted by jchanthy from ebook essential typescript
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TodoCollection = void 0;
 const todoItem_1 = require("./todoItem");
 class TodoCollection {
     constructor(userName, todoItems = []) {
@@ -17,11 +16,11 @@ class TodoCollection {
         this.todoItems.push(new todoItem_1.TodoItem(this.nextID, task));
         return this.nextID;
     }
-    getTodoByID(id) {
+    getTodoById(id) {
         return this.todoItems.find(item => item.id === id);
     }
     markComplete(id, complete) {
-        const todoItem = this.getTodoByID(id);
+        const todoItem = this.getTodoById(id);
         if (todoItem) {
             todoItem.complete = complete;
         }
