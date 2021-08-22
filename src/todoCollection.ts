@@ -3,19 +3,20 @@
 import {TodoItem} from './todoItem';
 
 export class TodoCollection {
-    private nextID = 1;
+    private nextId = 1;
+    private itemMap = new Map<number, TodoItem>();
 
     constructor(public userName: string,
-                public todoItems: TodoItem[] = []) {
-            // no statement required
+                todoItems: TodoItem[] = []) {
+                todoItems.forEach(item => this.itemMap.set(item.id, item));
 }
 
   addTodo(task: string): number{
-        while (this.getTodoById(this.nextID)) {
-            this.nextID++;
+        while (this.getTodoById(this.nextId)) {
+            this.nextId++;
         }
-        this.todoItems.push(new TodoItem(this.nextID, task));
-        return this.nextID;
+        this.itemMap.set(this.nextId, new TodoItem(this.Id, task));
+        return this.nextId;
     }
 
     getTodoById(id: number): TodoItem {

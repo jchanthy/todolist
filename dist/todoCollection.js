@@ -5,16 +5,16 @@ const todoItem_1 = require("./todoItem");
 class TodoCollection {
     constructor(userName, todoItems = []) {
         this.userName = userName;
-        this.todoItems = todoItems;
-        this.nextID = 1;
-        // no statement required
+        this.nextId = 1;
+        this.itemMap = new Map();
+        todoItems.forEach(item => this.itemMap.set(item.id, item));
     }
     addTodo(task) {
-        while (this.getTodoById(this.nextID)) {
-            this.nextID++;
+        while (this.getTodoById(this.nextId)) {
+            this.nextId++;
         }
-        this.todoItems.push(new todoItem_1.TodoItem(this.nextID, task));
-        return this.nextID;
+        this.itemMap.set(this.nextId, new todoItem_1.TodoItem(this.Id, task));
+        return this.nextId;
     }
     getTodoById(id) {
         return this.todoItems.find(item => item.id === id);

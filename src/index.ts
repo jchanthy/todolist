@@ -21,7 +21,7 @@ todoItem.printDetails();
 // collection.addTodo(todoItem);
 
 // tslint:disable-next-line:no-unused-expression
-addTodo(task: string): number {
+addTodo(task: string): numer {
   while (this.getTodoById(this.nextId)) {
     this.nextId++;
   }
